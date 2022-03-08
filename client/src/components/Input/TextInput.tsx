@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { InputChangeEventDetail, TextFieldTypes } from '@ionic/core'
-import { IonInput, IonItem, IonLabel, IonRow, IonCol } from '@ionic/react'
+import { IonInput, IonItem, IonLabel, IonRow, IonCol, IonText } from '@ionic/react'
 
 interface ComponentProps {
   label: string
@@ -12,7 +12,6 @@ interface ComponentProps {
 }
 
 const TextInput: FC<ComponentProps> = ({ label, name, type, value, onInputChange, error }) => {
-  console.log(error)
   return (
     <IonRow>
       <IonCol>
@@ -26,7 +25,7 @@ const TextInput: FC<ComponentProps> = ({ label, name, type, value, onInputChange
             name="name"/>
         </IonItem>
         <IonRow>
-        { error }
+          <IonText color="danger">{ error }</IonText>
         </IonRow>
       </IonCol>
     </IonRow>

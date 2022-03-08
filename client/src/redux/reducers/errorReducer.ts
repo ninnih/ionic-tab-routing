@@ -5,7 +5,7 @@ const initialState: Object = {};
 
 const errorReducer = (state = initialState, action: authActions) => {
   const payload = action.payload;
-  console.log(payload)
+
   switch (action.type) {
     case GET_ERRORS:
       return payload;

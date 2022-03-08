@@ -42,25 +42,30 @@ export const loginUser = (userData: LogInUser, history: History) => (dispatch: a
       
       localStorage.setItem("jwtToken", token);
       setAuthToken(token);
-
+      console.log(localStorage)
       const decoded: currentUser = jwt_decode(token);
       dispatch(setCurrentUser(decoded));
       
-      history.push('/dashboard')
+      history.push('/home')
     })
-    .catch((err: any) =>{
-      console.log(err)
+    .catch((err: any) => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
       })
+
+      let message = 'Please review your information'
+      if(err.response.data.emailnotfound) {
+        message = err.response.data.emailnotfound
+      }
+
       dispatch({
         type: OPEN_ALERT,
         payload: {
           showAlert: true,
           header: 'Felmeddelande',
-          subheader: 'Nånting gick snett',
-          message: 'Var vänlig se över din information'
+          subheader: '',
+          message: message
         }
       })
     }

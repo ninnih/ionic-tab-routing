@@ -8,7 +8,7 @@ export interface MenuItem {
 
 type ComponentProps = {
   items: MenuItem[]
-  isAuthenticated: boolean
+  isAuthenticated: boolean | null
   tabBar: boolean
 } 
 

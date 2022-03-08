@@ -3,6 +3,9 @@ import { Redirect, Route, Switch } from 'react-router'
 import Home from '../../pages/Home/Home'
 import LogIn from '../../pages/LogIn/LogIn'
 import Register from '../../pages/Register/Register'
+import Start from '../../pages/Start/Start'
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../redux/reducers'
 
 interface RouteInterface {
   path: string
@@ -23,7 +26,7 @@ export const ROUTES = [{
   exact: true,
   path: '/',
   key: 'ROOT',
-  component: Home,
+  component: Start,
   isProtected: false
 },{
   exact: true,
@@ -53,6 +56,12 @@ export const ROUTES = [{
   key: 'PROTECTED',
   component: () => <h1>protected</h1>,
   isProtected: true
+},{
+  exact: true,
+  path: '/home',
+  key: 'HOME',
+  component: Home,
+  isProtected: true
 }] as Array<RouteInterface>
 
 const RouteWithSubRoutes = (route: RouteInterface) => {
@@ -68,7 +77,7 @@ const RouteWithSubRoutes = (route: RouteInterface) => {
 }
 
 const ProtectedRoute = (route: RouteInterface) => {
-  const [isAuthenticated, setIsAuth] = React.useState(true)
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
 
   if(isAuthenticated === true) {
     return <Route {...route} />

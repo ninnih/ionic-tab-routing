@@ -30,9 +30,6 @@ const LogIn: FC = () => {
   })
 
   useEffect(() => {
-    console.log(login)
-  })
-  useEffect(() => {
     setLogin({
       ...login,
       errors: errors
@@ -65,7 +62,7 @@ const LogIn: FC = () => {
       <Header/>
       <IonContent>
         <IonGrid>
-        <TextInput label="Email" name="email" type="text" value={login.name} onInputChange={onInputChange} error={login.errors.email}/>
+        <TextInput label="Email" name="email" type="text" value={login.email} onInputChange={onInputChange} error={login.errors.email}/>
         <TextInput label="Lösenord" name="password" type="password" value={login.password} onInputChange={onInputChange} error={login.errors.password}/>
           <IonRow>
             <IonButton 

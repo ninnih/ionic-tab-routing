@@ -1,7 +1,13 @@
-import { IonContent, IonFooter, IonHeader, IonItem, IonList, IonMenu, IonTitle, IonToolbar } from '@ionic/react'
 import React from 'react'
+import { IonButton, IonContent, IonFooter, IonHeader, IonItem, IonList, IonMenu, IonTitle, IonToolbar } from '@ionic/react'
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../redux/reducers';
+import { logoutUser } from '../../redux/actions/authActions';
+
 
 const Menu: React.FC = () => {
+  const dispatch = useDispatch()
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
   return (
     <IonMenu side="start" menuId="first" contentId="main">
       <IonHeader>
@@ -11,11 +17,21 @@ const Menu: React.FC = () => {
       </IonHeader>
       <IonContent>
         <IonList>
-          <IonItem routerLink="/" routerDirection="forward">Hem</IonItem>
-          <IonItem>One</IonItem>
-          <IonItem>Two</IonItem>
+          <IonItem routerLink="/" routerDirection="forward">Start</IonItem>
+        </IonList>
+        <IonList>
+          <IonItem routerLink="/home" routerDirection="forward">Hem</IonItem>
         </IonList>
       </IonContent>
+      {isAuthenticated ? 
+      <IonFooter>
+        <IonItem>
+          <IonButton onClick={() => dispatch(logoutUser())}>
+            Logga ut
+          </IonButton>
+        </IonItem>
+      </IonFooter>
+      :
       <IonFooter>
         <IonItem routerLink="/login">
           Logga in
@@ -24,6 +40,7 @@ const Menu: React.FC = () => {
           Registrera konto
         </IonItem>
       </IonFooter>
+       }
     </IonMenu>
   )
 }

@@ -32,14 +32,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from './redux/reducers';
 import { openAlertAction } from './redux/actions/alertActions';
 import { AlertState } from './redux/types/alertTypes';
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser, logoutUser } from "./redux/actions/authActions";
 
 setupIonicReact();
 
 const App: React.FC = () => {
   const dispatch = useDispatch()
   const alert = useSelector((state: RootState) => state.alert)
-  const errors = useSelector((state: RootState) => state.errors)
-  const isAuthenticated = true
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
   const [tabBar, setTabBar] = useState<boolean>(true)
   const [showAlert, setShowAlert] = useState(false)
   const tabItems = [{
@@ -51,6 +53,24 @@ const App: React.FC = () => {
     title: 'Min sida',
     icon: 'home'
   }]
+
+  useEffect(() => {
+    console.log(localStorage)
+  })
+
+  useEffect(() => {
+    if (localStorage.jwtToken) {
+      const token = localStorage.jwtToken;
+      setAuthToken(token);
+      const decoded: any = jwt_decode(token);
+      dispatch(setCurrentUser(decoded));
+      const currentTime = Date.now() / 1000; 
+      if (decoded.exp < currentTime) {
+        dispatch(logoutUser());
+        window.location.href = "./login";
+      }
+    }
+  }, [])
 
   useEffect(() => {
     setShowAlert(alert.showAlert)
