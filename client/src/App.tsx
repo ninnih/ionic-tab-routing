@@ -49,14 +49,10 @@ const App: React.FC = () => {
     title: 'Hem',
     icon: 'home'
   },{
-    url: '/me',
+    url: '/user/0',
     title: 'Min sida',
     icon: 'home'
   }]
-
-  useEffect(() => {
-    console.log(localStorage)
-  })
 
   useEffect(() => {
     if (localStorage.jwtToken) {

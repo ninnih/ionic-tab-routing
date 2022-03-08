@@ -6,6 +6,7 @@ import Register from '../../pages/Register/Register'
 import Start from '../../pages/Start/Start'
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers'
+import UserPage from '../../pages/UserPage/UserPage'
 
 interface RouteInterface {
   path: string
@@ -61,6 +62,12 @@ export const ROUTES = [{
   path: '/home',
   key: 'HOME',
   component: Home,
+  isProtected: true
+},{
+  exact: true,
+  path: '/user/:id',
+  key: 'HOME',
+  component: UserPage,
   isProtected: true
 }] as Array<RouteInterface>
 
