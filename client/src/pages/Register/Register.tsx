@@ -68,12 +68,13 @@ const Register: FC = () => {
           <TextInput label="Email" name="email" type="text" value={register.email} onInputChange={onInputChange} error={register.errors.email}/>
           <TextInput label="Lösenord" name="password" type="password" value={register.password} onInputChange={onInputChange} error={register.errors.password}/>
           <TextInput label="Repetera lösenord" name="password2" type="password" value={register.password2} onInputChange={onInputChange} error={register.errors.password2}/>
-          <IonRow>
+          <IonRow class="flex justify-center fullWidth">
             <IonButton 
+              class="m-2"
               onClick={(e) => onRegister(e)}
               expand="block">Registrera dig</IonButton>
+            <IonText class="p-2">Har du redan ett konto? Logga in</IonText>
           </IonRow>
-          <IonText>Har du redan ett konto? Logga in</IonText>
         </IonGrid>
       </IonContent>
     </IonPage>

@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { IonButton, IonContent, IonFooter, IonHeader, IonItem, IonList, IonMenu, IonTitle, IonToolbar } from '@ionic/react'
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers';
 import { logoutUser } from '../../redux/actions/authActions';
 
 
-const Menu: React.FC = () => {
+const Menu: FC = () => {
   const dispatch = useDispatch()
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
+
   return (
     <IonMenu side="start" menuId="first" contentId="main">
       <IonHeader>
@@ -23,7 +24,7 @@ const Menu: React.FC = () => {
           <IonItem routerLink="/home" routerDirection="forward">Hem</IonItem>
         </IonList>
       </IonContent>
-      {isAuthenticated ? 
+      { isAuthenticated ? 
       <IonFooter>
         <IonItem>
           <IonButton onClick={() => dispatch(logoutUser())}>

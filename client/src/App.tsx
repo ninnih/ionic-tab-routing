@@ -24,17 +24,20 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import TabWrapper from './components/TabWrapper/TabWrapper';
-import ROUTES, { RenderRoutes } from './components/ProtectedRoute/ProtectedRoute';
-import Menu from './components/Menu/Menu';
-import Alert from './components/Alert/Alert';
+import './theme/variables.scss';
+import './theme/custom.scss';
+import { RenderRoutes } from './components/ProtectedRoute/ProtectedRoute';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from './redux/reducers';
 import { openAlertAction } from './redux/actions/alertActions';
 import { AlertState } from './redux/types/alertTypes';
+import { setCurrentUser, logoutUser } from "./redux/actions/authActions";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./redux/actions/authActions";
+import ROUTES from './components/ProtectedRoute/Routes';
+import TabWrapper from './components/TabWrapper/TabWrapper';
+import Menu from './components/Menu/Menu';
+import Alert from './components/Alert/Alert';
 
 setupIonicReact();
 

@@ -1,5 +1,5 @@
 import React, { FormEvent, useEffect, useState, FC } from 'react'
-import { IonButton, IonContent, IonGrid, IonInput, IonItem, IonLabel, IonPage, IonRow, IonText } from '@ionic/react'
+import { IonButton, IonContent, IonGrid, IonPage, IonRow, IonText } from '@ionic/react'
 import Header from '../../components/Header/Header'
 import { loginUser } from '../../redux/actions/authActions'
 import { useSelector, useDispatch } from 'react-redux';
@@ -38,7 +38,6 @@ const LogIn: FC = () => {
 
   const onInputChange = (e: CustomEvent<InputChangeEventDetail>, key: string) => {
     const value = e.detail.value
-    console.log(key)
 
     setLogin({
       ...login,
@@ -62,14 +61,15 @@ const LogIn: FC = () => {
       <Header/>
       <IonContent>
         <IonGrid>
-        <TextInput label="Email" name="email" type="text" value={login.email} onInputChange={onInputChange} error={login.errors.email}/>
-        <TextInput label="Lösenord" name="password" type="password" value={login.password} onInputChange={onInputChange} error={login.errors.password}/>
-          <IonRow>
+          <TextInput label="Email" name="email" type="text" value={login.email} onInputChange={onInputChange} error={login.errors.email}/>
+          <TextInput label="Lösenord" name="password" type="password" value={login.password} onInputChange={onInputChange} error={login.errors.password}/>
+          <IonRow class="flex justify-center">
             <IonButton 
+              class="m-2"
               onClick={(e) => onLogin(e)}
               expand="block">Logga in</IonButton>
+            <IonText class="p-2">Har du inget konto? Registrera dig</IonText>
           </IonRow>
-          <IonText>Har du inget konto? Registrera dig</IonText>
         </IonGrid>
       </IonContent>
     </IonPage>
