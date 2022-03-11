@@ -13,16 +13,17 @@ interface ComponentProps {
 
 const TextInput: FC<ComponentProps> = ({ label, name, type, value, onInputChange, error }) => {
   return (
-    <IonRow>
+    <IonRow class="fullWidth">
       <IonCol>
-        <IonItem>
+        <IonItem color="lightgrey border-r8">
           <IonLabel position='floating'>{label}</IonLabel>
           <IonInput onIonChange={(e) => {
               onInputChange(e, name)
             }} 
             type={type} 
             value={value} 
-            name="name"/>
+            name="name"
+            />
         </IonItem>
         <IonRow>
           <IonText color="danger">{ error }</IonText>

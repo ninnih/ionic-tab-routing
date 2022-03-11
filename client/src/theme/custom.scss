@@ -1,3 +1,9 @@
+ @import './variables.scss';
+
+ .p-0 {
+   padding: 0;
+ }
+
  .p-1 {
    padding: 0.5rem;
  }
@@ -105,6 +111,21 @@
   margin-right: 1rem;
 }
 
+.my-1 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.my-2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.my-3 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .fullWidth {
   width: 100%;
 }
@@ -167,4 +188,7 @@
   text-overflow: ellipsis;
 }
 
+.border-r8 {
+  border-radius: 8px;
+}
 

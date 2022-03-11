@@ -14,7 +14,7 @@ type ComponentProps = {
 
 const TabWrapper: React.FC<ComponentProps> = ({ isAuthenticated, tabBar, items, children }) => {
 
-  const tabs = tabBar ? <IonTabBar slot="bottom">
+  const tabs = tabBar ? <IonTabBar color="forestgreen" slot="bottom">
     {items.map((item, index) => 
       <IonTabButton
         key={index}
@@ -32,7 +32,7 @@ const TabWrapper: React.FC<ComponentProps> = ({ isAuthenticated, tabBar, items, 
     { isAuthenticated ?
       tabs
        : 
-      <IonTabBar slot="bottom">
+      <IonTabBar  color="forestgreen" slot="bottom">
         <IonTabButton tab="login" href="/login">Login</IonTabButton>
         <IonTabButton tab="register" href="/register">Register</IonTabButton>  
       </IonTabBar> 

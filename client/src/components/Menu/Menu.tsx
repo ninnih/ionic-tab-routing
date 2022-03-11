@@ -12,16 +12,14 @@ const Menu: FC = () => {
   return (
     <IonMenu side="start" menuId="first" contentId="main">
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="darkblue">
           <IonTitle>Menu</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <IonList>
-          <IonItem routerLink="/" routerDirection="forward">Start</IonItem>
-        </IonList>
-        <IonList>
-          <IonItem routerLink="/home" routerDirection="forward">Hem</IonItem>
+      <IonContent color="forestgreen">
+        <IonList class="p-0">
+          <IonItem color="forestgreen" routerLink="/" routerDirection="forward">Start</IonItem>
+          <IonItem color="forestgreen" routerLink="/home" routerDirection="forward">Hem</IonItem>
         </IonList>
       </IonContent>
       { isAuthenticated ? 
@@ -34,10 +32,10 @@ const Menu: FC = () => {
       </IonFooter>
       :
       <IonFooter>
-        <IonItem routerLink="/login">
+        <IonItem routerLink="/login" color="forestgreen">
           Logga in
         </IonItem>
-        <IonItem routerLink="/register">
+        <IonItem routerLink="/register" color="forestgreen">
           Registrera konto
         </IonItem>
       </IonFooter>
