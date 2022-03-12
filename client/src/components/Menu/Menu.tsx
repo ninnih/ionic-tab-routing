@@ -3,6 +3,7 @@ import { IonButton, IonContent, IonFooter, IonHeader, IonItem, IonList, IonMenu,
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers';
 import { logoutUser } from '../../redux/actions/authActions';
+import { NavLink } from 'react-router-dom'
 
 
 const Menu: FC = () => {
@@ -18,14 +19,18 @@ const Menu: FC = () => {
       </IonHeader>
       <IonContent color="forestgreen">
         <IonList class="p-0">
-          <IonItem color="forestgreen" routerLink="/" routerDirection="forward">Start</IonItem>
-          <IonItem color="forestgreen" routerLink="/home" routerDirection="forward">Hem</IonItem>
+          <NavLink to="/">
+            <IonItem color="forestgreen" routerDirection="forward">Start</IonItem>
+          </NavLink>
+          <NavLink to="/home">
+            <IonItem color="forestgreen" routerDirection="forward">Hem</IonItem>
+          </NavLink>
         </IonList>
       </IonContent>
       { isAuthenticated ? 
       <IonFooter>
-        <IonItem>
-          <IonButton onClick={() => dispatch(logoutUser())}>
+        <IonItem color="forestgreen">
+          <IonButton size="default" color="teal" class="rounded-button" onClick={() => dispatch(logoutUser())}>
             Logga ut
           </IonButton>
         </IonItem>

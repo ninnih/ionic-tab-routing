@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect, Route, Switch } from 'react-router'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers'
 

@@ -134,6 +134,10 @@
   height: 100%;
 }
 
+.maxWidth {
+  max-width: 500px;
+}
+
 .flex {
   display: flex;
 }
@@ -192,3 +196,14 @@
   border-radius: 8px;
 }
 
+.border-r25 {
+  --border-radius: 25px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.rounded-button {
+  --border-radius: 25px;
+}

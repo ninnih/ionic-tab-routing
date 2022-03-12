@@ -1,7 +1,7 @@
 import React, { useEffect, useState, FC, FormEvent } from 'react'
 import { IonButton, IonContent, IonGrid, IonPage, IonRouterLink, IonRow, IonText } from '@ionic/react'
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { RootState } from '../../redux/reducers/index';
 import { registerUser } from '../../redux/actions/authActions';
 import Header from '../../components/Header/Header'
@@ -68,15 +68,13 @@ const Register: FC = () => {
           <TextInput label="Email" name="email" type="text" value={register.email} onInputChange={onInputChange} error={register.errors.email}/>
           <TextInput label="Lösenord" name="password" type="password" value={register.password} onInputChange={onInputChange} error={register.errors.password}/>
           <TextInput label="Repetera lösenord" name="password2" type="password" value={register.password2} onInputChange={onInputChange} error={register.errors.password2}/>
-          <IonRow class="flex justify-center fullWidth px-1">
+          <IonRow class="flex justify-center px-1">
             <IonButton 
               color="teal"
               class="fullWidth my-2"
               onClick={(e) => onRegister(e)}
               expand="block">Registrera dig</IonButton>
-          </IonRow>
-          <IonRow class="flex justify-center fullWidth">
-            <IonRouterLink href="/login">Har du redan ett konto? Logga in</IonRouterLink>
+            <Link to="/login">Har du redan ett konto? Logga in</Link>
           </IonRow>
         </IonGrid>
       </IonContent>

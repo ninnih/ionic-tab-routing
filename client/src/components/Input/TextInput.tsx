@@ -13,7 +13,7 @@ interface ComponentProps {
 
 const TextInput: FC<ComponentProps> = ({ label, name, type, value, onInputChange, error }) => {
   return (
-    <IonRow class="fullWidth">
+    <IonRow class="fullWidth maxWidth">
       <IonCol>
         <IonItem color="lightgrey border-r8">
           <IonLabel position='floating'>{label}</IonLabel>

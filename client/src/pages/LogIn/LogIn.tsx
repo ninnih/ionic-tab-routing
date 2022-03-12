@@ -1,11 +1,11 @@
 import React, { FormEvent, useEffect, useState, FC } from 'react'
-import { IonButton, IonContent, IonGrid, IonPage, IonRouterLink, IonRow, IonText } from '@ionic/react'
-import Header from '../../components/Header/Header'
-import { loginUser } from '../../redux/actions/authActions'
+import { IonButton, IonContent, IonGrid, IonPage, IonRow } from '@ionic/react'
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
-import TextInput from '../../components/Input/TextInput';
+import { Link, useHistory } from "react-router-dom";
 import { RootState } from '../../redux/reducers';
+import { loginUser } from '../../redux/actions/authActions'
+import TextInput from '../../components/Input/TextInput';
+import Header from '../../components/Header/Header'
 
 interface InputChangeEventDetail {
   value: string | undefined | null;
@@ -69,7 +69,7 @@ const LogIn: FC = () => {
               class="fullWidth my-2"
               onClick={(e) => onLogin(e)}
               expand="block">Logga in</IonButton>
-            <IonRouterLink href="/register" color="primary">Har du inget konto? Registrera dig</IonRouterLink>
+            <Link to="/register" color="primary">Har du inget konto? Registrera dig</Link>
           </IonRow>
         </IonGrid>
       </IonContent>

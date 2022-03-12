@@ -38,6 +38,8 @@ import ROUTES from './components/ProtectedRoute/Routes';
 import TabWrapper from './components/TabWrapper/TabWrapper';
 import Menu from './components/Menu/Menu';
 import Alert from './components/Alert/Alert';
+import { withRouter } from 'react-router-dom';
+import { PageListener } from './helpers/pagelistener';
 
 setupIonicReact();
 
@@ -56,6 +58,9 @@ const App: React.FC = () => {
     title: 'Min sida',
     icon: 'home'
   }]
+
+  useEffect(() => {
+  })
 
   useEffect(() => {
     if (localStorage.jwtToken) {
@@ -80,8 +85,9 @@ const App: React.FC = () => {
       showAlert={showAlert}
       setShowAlert={setShowAlert}
       />
-    <Menu/>
     <IonReactRouter>
+      <PageListener />
+      <Menu />
       <TabWrapper 
         items={tabItems} 
         tabBar={tabBar} 
@@ -94,4 +100,4 @@ const App: React.FC = () => {
   </IonApp>
 }
 
-export default App;
+export default withRouter(App);
