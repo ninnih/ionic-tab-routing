@@ -1,0 +1,15 @@
+.main__modal {
+  --height: 90%;
+  --width: 90%;
+  --border-radius: 8px;
+
+  &--sheet {
+    --width: 100%;
+  }
+  
+  &--small {
+    --height: auto;
+    --max-height: 50vh;
+    --min-height: 30vh;
+  }
+}

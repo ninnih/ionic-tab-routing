@@ -40,26 +40,32 @@ import Menu from './components/Menu/Menu';
 import Alert from './components/Alert/Alert';
 import { withRouter } from 'react-router-dom';
 import { PageListener } from './helpers/pagelistener';
+import { openModalAction } from './redux/actions/modalActions';
+import Modal from './components/Modal/Modal';
+import { homeSharp, personSharp } from 'ionicons/icons';
+import TestComponent from './components/TestComponent/TestComponent';
 
 setupIonicReact();
 
 const App: React.FC = () => {
   const dispatch = useDispatch()
   const alert = useSelector((state: RootState) => state.alert)
+  const modal = useSelector((state: RootState) => state.modal)
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
   const [tabBar, setTabBar] = useState<boolean>(true)
   const [showAlert, setShowAlert] = useState(false)
   const tabItems = [{
     url: '/home',
     title: 'Hem',
-    icon: 'home'
+    icon: homeSharp
   },{
     url: '/user/0',
     title: 'Min sida',
-    icon: 'home'
+    icon: personSharp
   }]
 
   useEffect(() => {
+    console.log(modal)
   })
 
   useEffect(() => {
@@ -79,13 +85,22 @@ const App: React.FC = () => {
   useEffect(() => {
     setShowAlert(alert.showAlert)
   })
+
+  useEffect(() => {
+    dispatch(openModalAction({ 
+      sheetModal: false, 
+      small: false, 
+      component: <TestComponent prop="test"/> 
+    }))
+  }, [])
  
   return <IonApp>
-    <Alert 
-      showAlert={showAlert}
-      setShowAlert={setShowAlert}
-      />
     <IonReactRouter>
+      <Alert 
+        showAlert={showAlert}
+        setShowAlert={setShowAlert}
+        />
+      <Modal />
       <PageListener />
       <Menu />
       <TabWrapper 

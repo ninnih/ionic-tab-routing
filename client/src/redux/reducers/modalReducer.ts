@@ -2,7 +2,10 @@ import { ModalState, ModalActions,  } from '../types/modalTypes';
 import { OPEN_MODAL, CLOSE_MODAL } from "../constants/index";
 
 const initialState: ModalState = {
-	isOpen: false
+	isOpen: false,
+  sheetModal: false,
+  small: false,
+  component: null
 }
 
 const ModalReducer = (state = initialState, action: ModalActions) => {
@@ -10,16 +13,20 @@ const ModalReducer = (state = initialState, action: ModalActions) => {
   
   switch (action.type) {
     case OPEN_MODAL:
-      console.log(payload)
       return {
         ...state,
-        isOpen: true
+        isOpen: true,
+        sheetModal: payload.sheetModal,
+        small: payload.small,
+        component: payload.component
       };
 
     case CLOSE_MODAL:
       return {
         ...state,
-        isOpen: false
+        isOpen: false,
+        sheetModal: false,
+        small: false
       };
     
     default:
