@@ -44,6 +44,8 @@ import { openModalAction } from './redux/actions/modalActions';
 import Modal from './components/Modal/Modal';
 import { homeSharp, personSharp } from 'ionicons/icons';
 import TestComponent from './components/TestComponent/TestComponent';
+import Toast from './components/Toast/Toast';
+import { openToastAction } from './redux/actions/toastActions';
 
 setupIonicReact();
 
@@ -92,6 +94,10 @@ const App: React.FC = () => {
       small: false, 
       component: <TestComponent prop="test"/> 
     }))
+    dispatch(openToastAction({
+      message: 'test',
+      position: 'top'
+    }))
   }, [])
  
   return <IonApp>
@@ -101,6 +107,7 @@ const App: React.FC = () => {
         setShowAlert={setShowAlert}
         />
       <Modal />
+      <Toast />
       <PageListener />
       <Menu />
       <TabWrapper 
