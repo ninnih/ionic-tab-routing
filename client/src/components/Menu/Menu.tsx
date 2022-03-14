@@ -4,11 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/reducers';
 import { logoutUser } from '../../redux/actions/authActions';
 import { NavLink } from 'react-router-dom'
+import ROUTES from '../ProtectedRoute/Routes';
 
 
 const Menu: FC = () => {
   const dispatch = useDispatch()
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
+  const state = useSelector((state: RootState) => console.log(state))
 
   return (
     <IonMenu side="start" menuId="first" contentId="main">
@@ -19,12 +21,18 @@ const Menu: FC = () => {
       </IonHeader>
       <IonContent color="forestgreen">
         <IonList class="p-0">
-          <NavLink to="/">
-            <IonItem color="forestgreen" routerDirection="forward">Start</IonItem>
-          </NavLink>
-          <NavLink to="/home">
-            <IonItem color="forestgreen" routerDirection="forward">Hem</IonItem>
-          </NavLink>
+          { ROUTES.map(route => {
+            if(route.key !== 'LOGIN' && route.key !== 'REGISTER') {
+              return <NavLink  exact 
+              activeStyle={{
+                fontWeight: "bold",
+                textDecoration: 'underline',
+                color: 'white'
+              }} to={route.path} key={'route--' + route.key}>
+                <IonItem color="forestgreen" routerDirection='forward'>{route.name}</IonItem>
+              </NavLink>
+            }
+          })}
         </IonList>
       </IonContent>
       { isAuthenticated ? 

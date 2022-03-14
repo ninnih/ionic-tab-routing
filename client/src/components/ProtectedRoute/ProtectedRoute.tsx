@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers'
 
 export interface RouteInterface {
+  name: string
   path: string
   key: string
   exact: boolean

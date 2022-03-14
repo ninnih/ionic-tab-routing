@@ -18,17 +18,18 @@ const Toast = () => {
       buttons={[
         {
           side: 'start',
-          icon: 'star',
-          text: 'Favorite',
+          icon: toast.button1icon,
+          text: toast.button1text,
           handler: () => {
-            console.log('Favorite clicked');
+            toast.button1handler && toast.button1handler()
           }
         },
         {
-          text: 'Done',
+          text: toast.button2text,
+          icon: toast.button2icon,
           role: 'cancel',
           handler: () => {
-            console.log('Cancel clicked');
+            toast.button2handler && toast.button2handler()
           }
         }
       ]}

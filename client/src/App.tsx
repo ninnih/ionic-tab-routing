@@ -89,15 +89,16 @@ const App: React.FC = () => {
   })
 
   useEffect(() => {
-    dispatch(openModalAction({ 
-      sheetModal: false, 
-      small: false, 
-      component: <TestComponent prop="test"/> 
-    }))
-    dispatch(openToastAction({
-      message: 'test',
-      position: 'top'
-    }))
+    // dispatch(openModalAction({ 
+    //   sheetModal: false, 
+    //   small: false, 
+    //   component: <TestComponent prop="test"/> 
+    // }))
+
+    // dispatch(openToastAction({
+    //   message: 'test',
+    //   position: 'top'
+    // }))
   }, [])
  
   return <IonApp>

@@ -6,51 +6,40 @@ import UserPage from "../../pages/UserPage/UserPage";
 import { RouteInterface } from "./ProtectedRoute";
 
 export const ROUTES = [{
+  name: 'Start',
   exact: true,
   path: '/',
   key: 'ROOT',
   component: Start,
   isProtected: false
 },{
-  exact: true,
-  path: '/login',
-  key: 'LOGIN',
-  component: LogIn,
-  isProtected: false
-},{
-  exact: true,
-  path: '/register',
-  key: 'REGISTER',
-  component: Register,
-  isProtected: false
-},{
-  path: '/redirect',
-  key: 'REDIRECT',
-  component: Home,
-  isProtected: false,
-  routes: [{
-    exact: true,
-    path: '/redirect/:id',
-    component: <h1>here</h1>,
-  }]
-},{
-  exact: true,
-  path: '/protected',
-  key: 'PROTECTED',
-  component: () => <h1>protected</h1>,
-  isProtected: true
-},{
+  name: 'Home',
   exact: true,
   path: '/home',
   key: 'HOME',
   component: Home,
   isProtected: true
 },{
+  name: 'My page',
   exact: true,
   path: '/user/:id',
-  key: 'HOME',
+  key: 'MYPAGE',
   component: UserPage,
   isProtected: true
+},{
+  name: 'Log in',
+  exact: true,
+  path: '/login',
+  key: 'LOGIN',
+  component: LogIn,
+  isProtected: false
+},{
+  name: 'Register',
+  exact: true,
+  path: '/register',
+  key: 'REGISTER',
+  component: Register,
+  isProtected: false
 }] as Array<RouteInterface>
 
 export default ROUTES
